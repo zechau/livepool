@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Livepool by rehorn</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/rehorn/livepool">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/rehorn/livepool/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/rehorn/livepool/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Livepool</h1>
+          <p>Cross platform debugging proxy for web developers base on NodeJS</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/rehorn">rehorn</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="livepool" class="anchor" href="#livepool"><span class="octicon octicon-link"></span></a>LivePool</h1>
+
+<p>Fiddler Like debugging proxy for web developers base on NodeJS</p>
+
+<p>LivePool 是一个基于 NodeJS，类似 Fiddler 支持抓包和本地替换的 Web 开发调试工具，是 Tencent AlloyTeam 在开发实践过程总结出的一套的便捷的 WorkFlow 以及调试方案。</p>
+
+<h2>
+<a name="%E7%89%88%E6%9C%AC" class="anchor" href="#%E7%89%88%E6%9C%AC"><span class="octicon octicon-link"></span></a>版本</h2>
+
+<p>version: 0.7.2</p>
+
+<h2>
+<a name="%E7%89%B9%E6%80%A7" class="anchor" href="#%E7%89%B9%E6%80%A7"><span class="octicon octicon-link"></span></a>特性</h2>
+
+<ul>
+<li>基于 NodeJS, 跨平台</li>
+<li>便捷的 UI 界面，跟 Fiddler 类似，降低学习成本</li>
+<li>支持 http 抓包和本地替换调试，Https/WebSockets 直接代理，暂不支持本地替换</li>
+<li>基于项目的替换规则管理，方便高效，规则支持拖曳排序</li>
+<li>支持规则替换，host 配置</li>
+<li>替换类型支持：文件/文件夹替换，combo合并替换，qzmin替换（批量combo)，delay延时等</li>
+<li>支持自动设置系统代理</li>
+<li>支持规则过滤，只显示关注的请求</li>
+<li>提供构建 http get/post 请求界面，方便接口调试</li>
+<li>特色功能：模拟gprs/3g等低网速（mac only）</li>
+<li>特色功能：支持离线站点到本地，并自动代码格式化</li>
+</ul><h2>
+<a name="%E5%AE%89%E8%A3%85" class="anchor" href="#%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>安装</h2>
+
+<ul>
+<li>先安装 nodejs, 参考官网 <a href="http://nodejs.org">http://nodejs.org</a>
+</li>
+</ul><h3>
+<a name="%E4%BB%8E-git-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85" class="anchor" href="#%E4%BB%8E-git-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>从 git 下载安装</h3>
+
+<ul>
+<li>下载， 运行 livepool</li>
+</ul><pre lang="shell"><code>git clone https://github.com/rehorn/livepool
+</code></pre>
+
+<ul>
+<li>安装依赖</li>
+</ul><pre lang="shell"><code>cd ~/livepool
+npm install
+</code></pre>
+
+<ul>
+<li>运行 livepool</li>
+</ul><pre lang="shell"><code>node livepool.js
+</code></pre>
+
+<h3>
+<a name="%E4%BD%BF%E7%94%A8-npm-%E8%BF%9B%E8%A1%8C%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85" class="anchor" href="#%E4%BD%BF%E7%94%A8-npm-%E8%BF%9B%E8%A1%8C%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>使用 npm 进行全局安装</h3>
+
+<pre lang="shell"><code>node install livepool -g
+</code></pre>
+
+<ul>
+<li>运行 livepool</li>
+</ul><pre lang="shell"><code>livepool
+</code></pre>
+
+<h3>
+<a name="%E4%BD%BF%E7%94%A8" class="anchor" href="#%E4%BD%BF%E7%94%A8"><span class="octicon octicon-link"></span></a>使用</h3>
+
+<ul>
+<li>将浏览器的代理设置为 <a href="http://127.0.0.1:8090">http://127.0.0.1:8090</a>, chrome 可以通过 switchsharp 进行</li>
+<li>打开浏览器，<a href="http://127.0.0.1:8002">http://127.0.0.1:8002</a>
+</li>
+<li>打开需要调试页面地址，如 <a href="http://im.qq.com">http://im.qq.com</a>
+</li>
+</ul><p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot1.png" alt="效果图"></p>
+
+<h3>
+<a name="%E7%95%8C%E9%9D%A2%E8%AF%B4%E6%98%8E" class="anchor" href="#%E7%95%8C%E9%9D%A2%E8%AF%B4%E6%98%8E"><span class="octicon octicon-link"></span></a>界面说明</h3>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot2.png" alt="界面说明"></p>
+
+<ol>
+<li>菜单区</li>
+<li>Session（显示所有http请求信息）</li>
+<li>TreeView（使用树状结构显示Session信息）</li>
+<li>功能Tab: Pool（按照项目管理本地替换规则）</li>
+<li>功能Tab: Inspector (session查看器，查看请求header，body等信息)</li>
+<li>功能Tab: Composer（http请求模拟器，可以模拟http get/post请求）</li>
+<li>功能Tab: Filter（session过滤器，根据规则过滤session，只保留关注的）</li>
+<li>功能Tab: Log（日志显示）</li>
+<li>功能Tab: Timeline（session时间轴，comming soon）</li>
+<li>功能Tab: Statics（统计，对站点性能进行评估，comming soon）</li>
+</ol><h2>
+<a name="%E4%BD%BF%E7%94%A8-livepool-%E8%BF%9B%E8%A1%8C%E6%8A%93%E5%8C%85" class="anchor" href="#%E4%BD%BF%E7%94%A8-livepool-%E8%BF%9B%E8%A1%8C%E6%8A%93%E5%8C%85"><span class="octicon octicon-link"></span></a>使用 LivePool 进行抓包</h2>
+
+<p>拦截所有的 http 请求，查看分析请求内容</p>
+
+<h3>
+<a name="%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86" class="anchor" href="#%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86"><span class="octicon octicon-link"></span></a>设置代理</h3>
+
+<h5>
+<a name="%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BB%A3%E7%90%86" class="anchor" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BB%A3%E7%90%86"><span class="octicon octicon-link"></span></a>浏览器代理</h5>
+
+<p>手动将浏览器代理设置为 127.0.0.1:8090, Chrome 可使用 SwitchSharp 等插件进行代理切换，这样浏览器发出的所有的请求就能通过 livepool 中抓取</p>
+
+<h5>
+<a name="%E7%B3%BB%E7%BB%9F%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86" class="anchor" href="#%E7%B3%BB%E7%BB%9F%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86"><span class="octicon octicon-link"></span></a>系统全局代理</h5>
+
+<p>livepool 可以设置系统全局代理，实现系统所有 http 请求的抓取</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot3.png" alt="效果图"></p>
+
+<h3>
+<a name="%E5%9C%A8-session-%E4%B8%AD%E6%B5%8F%E8%A7%88%E8%AF%B7%E6%B1%82" class="anchor" href="#%E5%9C%A8-session-%E4%B8%AD%E6%B5%8F%E8%A7%88%E8%AF%B7%E6%B1%82"><span class="octicon octicon-link"></span></a>在 Session 中浏览请求</h3>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot10.png" alt="效果图"></p>
+
+<ul>
+<li>灰色背景：命中本地替换规则，并返回了本地内容的请求</li>
+<li>绿色：js 请求</li>
+<li>玫红：css 请求</li>
+<li>蓝色：json 请求</li>
+<li>黑色：其他类型请求</li>
+</ul><h3>
+<a name="%E4%BD%BF%E7%94%A8-inspector-%E6%9F%A5%E7%9C%8B%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9" class="anchor" href="#%E4%BD%BF%E7%94%A8-inspector-%E6%9F%A5%E7%9C%8B%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9"><span class="octicon octicon-link"></span></a>使用 inspector 查看请求内容</h3>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot4.png" alt="效果图"></p>
+
+<h5>
+<a name="http-request" class="anchor" href="#http-request"><span class="octicon octicon-link"></span></a>http request</h5>
+
+<p>可以查看http request的header，cookie等信息</p>
+
+<h5>
+<a name="http-response" class="anchor" href="#http-response"><span class="octicon octicon-link"></span></a>http response</h5>
+
+<p>可以查看http response的header，cookie，视图等信息</p>
+
+<h5>
+<a name="%E8%A7%86%E5%9B%BE%E5%88%87%E6%8D%A2" class="anchor" href="#%E8%A7%86%E5%9B%BE%E5%88%87%E6%8D%A2"><span class="octicon octicon-link"></span></a>视图切换</h5>
+
+<p>可以查看图片、JSON、文本代码，并且对代码进行格式化，快速添加替换规则</p>
+
+<p>tips: 便捷操作</p>
+
+<blockquote>
+<ul>
+<li>双击 sesssion 区域请求，快速查看请求内容</li>
+<li>在 TreeView 中节点，快速滚动到该请求，并查看对应请求内容</li>
+<li>右键复制请求 url</li>
+<li>右键在浏览器打开该 url</li>
+<li>右键 replay，再次发起该请求</li>
+</ul>
+</blockquote>
+
+<h2>
+<a name="%E6%9C%AC%E5%9C%B0%E6%9B%BF%E6%8D%A2%E5%BC%80%E5%8F%91" class="anchor" href="#%E6%9C%AC%E5%9C%B0%E6%9B%BF%E6%8D%A2%E5%BC%80%E5%8F%91"><span class="octicon octicon-link"></span></a>本地替换开发</h2>
+
+<p>将浏览器请求替换为本地文件，进行线上调试或本地开发，修改立刻生效</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot5.png" alt="效果图"></p>
+
+<h3>
+<a name="%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE" class="anchor" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="octicon octicon-link"></span></a>新建项目</h3>
+
+<p>填写项目名称和根目录</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot6.png" alt="效果图"></p>
+
+<h3>
+<a name="%E6%96%B0%E5%BB%BA%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99" class="anchor" href="#%E6%96%B0%E5%BB%BA%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>新建替换规则</h3>
+
+<p>填写handler替换规则或router路由规则</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot7.png" alt="效果图"></p>
+
+<h3>
+<a name="%E6%96%87%E4%BB%B6%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99" class="anchor" href="#%E6%96%87%E4%BB%B6%E6%9B%BF%E6%8D%A2%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>文件替换规则</h3>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot8.png" alt="效果图"></p>
+
+<ul>
+<li>延时规则</li>
+<li>combo规则</li>
+<li>qzmin规则（批量combo规则）</li>
+<li>文件替换</li>
+<li>文件夹替换</li>
+</ul><blockquote>
+<p>tips: 便捷操作</p>
+
+<ul>
+<li>拖曳规则可以将规则进行快速排序</li>
+<li>从 session（界面区域1）拖曳请求到 Pool（界面区域4），可以快速创建本地替换规则</li>
+<li>快捷键：shift+c 复制当前选中项目或规则</li>
+<li>通过工具栏 export/import 进行规则的导入导出</li>
+</ul>
+</blockquote>
+
+<h3>
+<a name="%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99" class="anchor" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>路由规则</h3>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot9.png" alt="效果图"></p>
+
+<ul>
+<li>使用 - 进行直接代理：将请求直接代理转发到目标机器</li>
+<li>ip 路由：将请求路由到指定机器（相当于配置 host）</li>
+</ul><h2>
+<a name="%E8%AF%B7%E6%B1%82%E6%9E%84%E5%BB%BA%E5%99%A8" class="anchor" href="#%E8%AF%B7%E6%B1%82%E6%9E%84%E5%BB%BA%E5%99%A8"><span class="octicon octicon-link"></span></a>请求构建器</h2>
+
+<p>模拟 http 请求，可以修改get/post请求参数</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot11.png" alt="效果图"></p>
+
+<h2>
+<a name="%E8%BF%87%E6%BB%A4%E5%99%A8" class="anchor" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="octicon octicon-link"></span></a>过滤器</h2>
+
+<p>使用规则过滤不重要的请求</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot12.png" alt="效果图"></p>
+
+<h2>
+<a name="%E6%97%A5%E5%BF%97" class="anchor" href="#%E6%97%A5%E5%BF%97"><span class="octicon octicon-link"></span></a>日志</h2>
+
+<p>显示系统信息、错误日志等</p>
+
+<h2>
+<a name="%E6%A8%A1%E6%8B%9F%E4%BD%8E%E7%BD%91%E9%80%9Fmac" class="anchor" href="#%E6%A8%A1%E6%8B%9F%E4%BD%8E%E7%BD%91%E9%80%9Fmac"><span class="octicon octicon-link"></span></a>模拟低网速[mac]</h2>
+
+<p>模拟网络质量较差网络，查看站点表现</p>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot3.png" alt="效果图"></p>
+
+<ul>
+<li>GPRS: 48kbit/s</li>
+<li>Edge: 64kbit/s</li>
+<li>3g: 348kbit/s</li>
+<li>ADSL: 768kbit/s</li>
+<li>WIFI: 2048kbit/s</li>
+</ul><h2>
+<a name="%E7%A6%BB%E7%BA%BF%E7%AB%99%E7%82%B9%E5%88%B0%E6%9C%AC%E5%9C%B0" class="anchor" href="#%E7%A6%BB%E7%BA%BF%E7%AB%99%E7%82%B9%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="octicon octicon-link"></span></a>离线站点到本地</h2>
+
+<ul>
+<li>将站点内容离线到本地，并自动代码格式化，便于查看</li>
+<li>站点保存到当前文件夹 Sites 下</li>
+</ul><p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot13.png" alt="效果图"></p>
+
+<h2>
+<a name="%E5%BF%AB%E6%8D%B7%E9%94%AE" class="anchor" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="octicon octicon-link"></span></a>快捷键</h2>
+
+<p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot14.png" alt="效果图"></p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>完善 Timeline时间轴、Stat统计界面</li>
+<li>LiveReload、AlloyDesinger集成，</li>
+<li>支持构建工具 task 管理与运行，如 Grunt, Gulp, Mod</li>
+<li>More....</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
