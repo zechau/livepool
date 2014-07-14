@@ -1,6 +1,6 @@
 {
     "name": "livepool",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "description": "debugging proxy for web developers base on NodeJS",
     "keywords": [
         "proxy",

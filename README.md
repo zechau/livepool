@@ -4,14 +4,14 @@ Fiddler Like debugging proxy for web developers base on NodeJS
 LivePool 是一个基于 NodeJS，类似 Fiddler 支持抓包和本地替换的 Web 开发调试工具，是 Tencent AlloyTeam 在开发实践过程总结出的一套的便捷的 WorkFlow 以及调试方案。
 
 ## 版本
-version: 0.7.2
+version: 0.7.5
 
 ## 特性
 - 基于 NodeJS, 跨平台
 - 便捷的 UI 界面，跟 Fiddler 类似，降低学习成本
-- 支持 http 抓包和本地替换调试，Https/WebSockets 直接代理，暂不支持本地替换
+- 支持 http 抓包和本地替换调试，Https/WebSockets 直接代理转发，暂不支持本地替换
 - 基于项目的替换规则管理，方便高效，规则支持拖曳排序
-- 支持规则替换，host 配置
+- 支持基于请求路径的本地文件替换，支持基于请求路径的路由转发（host 配置）
 - 替换类型支持：文件/文件夹替换，combo合并替换，qzmin替换（批量combo)，delay延时等
 - 支持自动设置系统代理
 - 支持规则过滤，只显示关注的请求
@@ -128,11 +128,20 @@ tips: 便捷操作
 
 ![效果图](http://raw.github.com/rehorn/livepool/master/test/screenshot/shot8.png)
 
-- 延时规则
-- combo规则
-- qzmin规则（批量combo规则）
-- 文件替换
-- 文件夹替换
+##### 延时规则
+将请求阻塞指定的时间，再返回给浏览器，可以用来测试极端网络下资源阻塞的页面表现
+
+##### combo规则
+将本地的多个文件合并为一个之后，返回给浏览器，多个文件路径之间使用“|”作为间隔符，一般用来开发调试站点js/css资源分模块进行文件存储的情况
+
+##### qzmin规则（批量combo规则）
+combo规则批量版本，使用一个json文件指定合并规则，便于替换和管理，文件格式请参考范例，[find.all.qzmin](https://github.com/rehorn/livepool/blob/master/test/examples/tools/find.all.qzmin)
+
+##### 文件替换
+将某个请求拦截，并使用本地文件替换，返回浏览器，可以用于本地开发调试
+
+##### 文件夹替换
+将指定路径的请求，使用本地文件夹下同名文件进行替换（未找到对应文件则直接代理），返回浏览器，可以用于本地开发调试
 
 > tips: 便捷操作
 > - 拖曳规则可以将规则进行快速排序
@@ -144,8 +153,8 @@ tips: 便捷操作
 
 ![效果图](http://raw.github.com/rehorn/livepool/master/test/screenshot/shot9.png)
 
-- 使用 - 进行直接代理：将请求直接代理转发到目标机器
-- ip 路由：将请求路由到指定机器（相当于配置 host）
+- 使用 ‘-’ 表示直接代理：将请求直接代理转发到目标机器
+- ip 路由：将命中的请求路由到指定机器（相当于配置 host）
 
 ## 请求构建器
 模拟 http 请求，可以修改get/post请求参数
@@ -186,3 +195,10 @@ tips: 便捷操作
 - LiveReload、AlloyDesinger集成，
 - 支持构建工具 task 管理与运行，如 Grunt, Gulp, Mod
 - More....
+
+## Thanks
+extjs(sencha)
+http-proxy
+express
+socket.io
+underscore
