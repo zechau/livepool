@@ -1,5 +1,5 @@
 # LivePool
-Fiddler Like debugging proxy for web developers base on NodeJS
+Fiddler Like cross platform debugging proxy for web developers base on NodeJS
 
 LivePool 是一个基于 NodeJS，类似 Fiddler 支持抓包和本地替换的 Web 开发调试工具，是 Tencent AlloyTeam 在开发实践过程总结出的一套的便捷的 WorkFlow 以及调试方案。
 
