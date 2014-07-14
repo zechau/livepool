@@ -41,14 +41,14 @@
         <h1>
 <a name="livepool" class="anchor" href="#livepool"><span class="octicon octicon-link"></span></a>LivePool</h1>
 
-<p>Fiddler Like debugging proxy for web developers base on NodeJS</p>
+<p>Fiddler Like cross platform debugging proxy for web developers base on NodeJS</p>
 
 <p>LivePool 是一个基于 NodeJS，类似 Fiddler 支持抓包和本地替换的 Web 开发调试工具，是 Tencent AlloyTeam 在开发实践过程总结出的一套的便捷的 WorkFlow 以及调试方案。</p>
 
 <h2>
 <a name="%E7%89%88%E6%9C%AC" class="anchor" href="#%E7%89%88%E6%9C%AC"><span class="octicon octicon-link"></span></a>版本</h2>
 
-<p>version: 0.7.2</p>
+<p>version: 0.7.5</p>
 
 <h2>
 <a name="%E7%89%B9%E6%80%A7" class="anchor" href="#%E7%89%B9%E6%80%A7"><span class="octicon octicon-link"></span></a>特性</h2>
@@ -56,9 +56,9 @@
 <ul>
 <li>基于 NodeJS, 跨平台</li>
 <li>便捷的 UI 界面，跟 Fiddler 类似，降低学习成本</li>
-<li>支持 http 抓包和本地替换调试，Https/WebSockets 直接代理，暂不支持本地替换</li>
+<li>支持 http 抓包和本地替换调试，Https/WebSockets 直接代理转发，暂不支持本地替换</li>
 <li>基于项目的替换规则管理，方便高效，规则支持拖曳排序</li>
-<li>支持规则替换，host 配置</li>
+<li>支持基于请求路径的本地文件替换，支持基于请求路径的路由转发（host 配置）</li>
 <li>替换类型支持：文件/文件夹替换，combo合并替换，qzmin替换（批量combo)，delay延时等</li>
 <li>支持自动设置系统代理</li>
 <li>支持规则过滤，只显示关注的请求</li>
@@ -217,13 +217,32 @@ npm install
 
 <p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot8.png" alt="效果图"></p>
 
-<ul>
-<li>延时规则</li>
-<li>combo规则</li>
-<li>qzmin规则（批量combo规则）</li>
-<li>文件替换</li>
-<li>文件夹替换</li>
-</ul><blockquote>
+<h5>
+<a name="%E5%BB%B6%E6%97%B6%E8%A7%84%E5%88%99" class="anchor" href="#%E5%BB%B6%E6%97%B6%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>延时规则</h5>
+
+<p>将请求阻塞指定的时间，再返回给浏览器，可以用来测试极端网络下资源阻塞的页面表现</p>
+
+<h5>
+<a name="combo%E8%A7%84%E5%88%99" class="anchor" href="#combo%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>combo规则</h5>
+
+<p>将本地的多个文件合并为一个之后，返回给浏览器，多个文件路径之间使用“|”作为间隔符，一般用来开发调试站点js/css资源分模块进行文件存储的情况</p>
+
+<h5>
+<a name="qzmin%E8%A7%84%E5%88%99%E6%89%B9%E9%87%8Fcombo%E8%A7%84%E5%88%99" class="anchor" href="#qzmin%E8%A7%84%E5%88%99%E6%89%B9%E9%87%8Fcombo%E8%A7%84%E5%88%99"><span class="octicon octicon-link"></span></a>qzmin规则（批量combo规则）</h5>
+
+<p>combo规则批量版本，使用一个json文件指定合并规则，便于替换和管理，文件格式请参考范例，<a href="https://github.com/rehorn/livepool/blob/master/test/examples/tools/find.all.qzmin">find.all.qzmin</a></p>
+
+<h5>
+<a name="%E6%96%87%E4%BB%B6%E6%9B%BF%E6%8D%A2" class="anchor" href="#%E6%96%87%E4%BB%B6%E6%9B%BF%E6%8D%A2"><span class="octicon octicon-link"></span></a>文件替换</h5>
+
+<p>将某个请求拦截，并使用本地文件替换，返回浏览器，可以用于本地开发调试</p>
+
+<h5>
+<a name="%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%BF%E6%8D%A2" class="anchor" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9B%BF%E6%8D%A2"><span class="octicon octicon-link"></span></a>文件夹替换</h5>
+
+<p>将指定路径的请求，使用本地文件夹下同名文件进行替换（未找到对应文件则直接代理），返回浏览器，可以用于本地开发调试</p>
+
+<blockquote>
 <p>tips: 便捷操作</p>
 
 <ul>
@@ -240,8 +259,8 @@ npm install
 <p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot9.png" alt="效果图"></p>
 
 <ul>
-<li>使用 - 进行直接代理：将请求直接代理转发到目标机器</li>
-<li>ip 路由：将请求路由到指定机器（相当于配置 host）</li>
+<li>使用 ‘-’ 表示直接代理：将请求直接代理转发到目标机器</li>
+<li>ip 路由：将命中的请求路由到指定机器（相当于配置 host）</li>
 </ul><h2>
 <a name="%E8%AF%B7%E6%B1%82%E6%9E%84%E5%BB%BA%E5%99%A8" class="anchor" href="#%E8%AF%B7%E6%B1%82%E6%9E%84%E5%BB%BA%E5%99%A8"><span class="octicon octicon-link"></span></a>请求构建器</h2>
 
@@ -295,7 +314,14 @@ npm install
 <li>LiveReload、AlloyDesinger集成，</li>
 <li>支持构建工具 task 管理与运行，如 Grunt, Gulp, Mod</li>
 <li>More....</li>
-</ul>
+</ul><h2>
+<a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
+
+<p>extjs(sencha)
+http-proxy
+express
+socket.io
+underscore</p>
       </section>
 
     </div>
