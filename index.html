@@ -55,8 +55,9 @@
 
 <ul>
 <li>基于 NodeJS, 跨平台</li>
-<li>便捷的 UI 界面，跟 Fiddler 类似，降低学习成本</li>
-<li>支持 http 抓包和本地替换调试，Https/WebSockets 直接代理转发，暂不支持本地替换</li>
+<li>支持 http 抓包和本地替换调试，Https/WebSockets 直接代理转发（暂不支持本地替换）</li>
+<li>便捷的 UI 管理界面，跟 Fiddler 类似，降低学习成本</li>
+<li>可以脱离 UI 后台运行，适应于某些不需要抓包，只需要使用替换和简单路由的场景</li>
 <li>基于项目的替换规则管理，方便高效，规则支持拖曳排序</li>
 <li>支持基于请求路径的本地文件替换，支持基于请求路径的路由转发（host 配置）</li>
 <li>替换类型支持：文件/文件夹替换，combo合并替换，qzmin替换（批量combo)，delay延时等</li>
@@ -93,7 +94,7 @@ npm install
 <h3>
 <a name="%E4%BD%BF%E7%94%A8-npm-%E8%BF%9B%E8%A1%8C%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85" class="anchor" href="#%E4%BD%BF%E7%94%A8-npm-%E8%BF%9B%E8%A1%8C%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85"><span class="octicon octicon-link"></span></a>使用 npm 进行全局安装</h3>
 
-<pre lang="shell"><code>node install livepool -g
+<pre lang="shell"><code>npm install livepool -g
 </code></pre>
 
 <ul>
