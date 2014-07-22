@@ -53,6 +53,14 @@ livepool
 - 打开浏览器，http://127.0.0.1:8002
 - 打开需要调试页面地址，如 http://im.qq.com
 
+### 局域网调试（如 wifi局域网）
+- 将浏览器的代理设置为对应的局域网ip http://192.168.1.*:8090, chrome 可以通过 switchsharp 进行
+- 打开需要调试页面地址，如 http://im.qq.com
+
+### 调试移动 web 页面
+- 将手机的 wifi 连接代理设置为：服务器 192.168.1.*(对应的局域网 ip)，端口 8090
+- 打开浏览器测试
+
 ![效果图](http://raw.github.com/rehorn/livepool/master/test/screenshot/shot1.png)
 
 ### 界面说明
@@ -198,8 +206,8 @@ combo规则批量版本，使用一个json文件指定合并规则，便于替�
 - More....
 
 ## Thanks
-extjs(sencha)
-http-proxy
-express
-socket.io
-underscore
+- extjs(sencha)
+- http-proxy
+- express
+- socket.io
+- underscore
