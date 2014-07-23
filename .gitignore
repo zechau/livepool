@@ -3,3 +3,7 @@ tmp
 node_modules.zip
 *.iml
 .idea
+rules/setting.js
+rules/global.js
+rules/pool.js
+rules/pool-*.js
