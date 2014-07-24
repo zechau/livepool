@@ -4,7 +4,7 @@ Fiddler Like cross platform debugging proxy for web developers base on NodeJS
 LivePool 是一个基于 NodeJS，类似 Fiddler 支持抓包和本地替换的 Web 开发调试工具，是 Tencent AlloyTeam 在开发实践过程总结出的一套的便捷的 WorkFlow 以及调试方案。
 
 ## 版本
-version: 0.7.5
+version: 0.7.9
 
 ## 特性
 - 基于 NodeJS, 跨平台
@@ -60,6 +60,11 @@ livepool
 ### 调试移动 web 页面
 - 将手机的 wifi 连接代理设置为：服务器 192.168.1.*(对应的局域网 ip)，端口 8090
 - 打开浏览器测试
+
+### 网络代理访问
+- 某些网络环境下，比如公司内网，需要配置特定代理才能访问外网，livepool 支持网络代理访问
+- 找到当前运行目录下 rules/global.js 配置文件，加上如下代理配置项目，重启启动即可
+- proxy:'http://proxy.tencent.com:8080'
 
 ![效果图](http://raw.github.com/rehorn/livepool/master/test/screenshot/shot1.png)
 
