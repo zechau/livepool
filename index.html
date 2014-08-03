@@ -48,7 +48,7 @@
 <h2>
 <a name="%E7%89%88%E6%9C%AC" class="anchor" href="#%E7%89%88%E6%9C%AC"><span class="octicon octicon-link"></span></a>版本</h2>
 
-<p>version: 0.7.5</p>
+<p>version: 0.7.9</p>
 
 <h2>
 <a name="%E7%89%B9%E6%80%A7" class="anchor" href="#%E7%89%B9%E6%80%A7"><span class="octicon octicon-link"></span></a>特性</h2>
@@ -111,6 +111,26 @@ npm install
 </li>
 <li>打开需要调试页面地址，如 <a href="http://im.qq.com">http://im.qq.com</a>
 </li>
+</ul><h3>
+<a name="%E5%B1%80%E5%9F%9F%E7%BD%91%E8%B0%83%E8%AF%95%E5%A6%82-wifi%E5%B1%80%E5%9F%9F%E7%BD%91" class="anchor" href="#%E5%B1%80%E5%9F%9F%E7%BD%91%E8%B0%83%E8%AF%95%E5%A6%82-wifi%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="octicon octicon-link"></span></a>局域网调试（如 wifi局域网）</h3>
+
+<ul>
+<li>将浏览器的代理设置为对应的局域网ip <a href="http://192.168.1.*:8090">http://192.168.1.*:8090</a>, chrome 可以通过 switchsharp 进行</li>
+<li>打开需要调试页面地址，如 <a href="http://im.qq.com">http://im.qq.com</a>
+</li>
+</ul><h3>
+<a name="%E8%B0%83%E8%AF%95%E7%A7%BB%E5%8A%A8-web-%E9%A1%B5%E9%9D%A2" class="anchor" href="#%E8%B0%83%E8%AF%95%E7%A7%BB%E5%8A%A8-web-%E9%A1%B5%E9%9D%A2"><span class="octicon octicon-link"></span></a>调试移动 web 页面</h3>
+
+<ul>
+<li>将手机的 wifi 连接代理设置为：服务器 192.168.1.*(对应的局域网 ip)，端口 8090</li>
+<li>打开浏览器测试</li>
+</ul><h3>
+<a name="%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE" class="anchor" href="#%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E8%AE%BF%E9%97%AE"><span class="octicon octicon-link"></span></a>网络代理访问</h3>
+
+<ul>
+<li>某些网络环境下，比如公司内网，需要配置特定代理才能访问外网，livepool 支持网络代理访问</li>
+<li>找到当前运行目录下 rules/global.js 配置文件，加上如下代理配置项目，重启启动即可</li>
+<li>proxy:'<a href="http://proxy.tencent.com:8080">http://proxy.tencent.com:8080</a>'</li>
 </ul><p><img src="http://raw.github.com/rehorn/livepool/master/test/screenshot/shot1.png" alt="效果图"></p>
 
 <h3>
@@ -318,11 +338,13 @@ npm install
 </ul><h2>
 <a name="thanks" class="anchor" href="#thanks"><span class="octicon octicon-link"></span></a>Thanks</h2>
 
-<p>extjs(sencha)
-http-proxy
-express
-socket.io
-underscore</p>
+<ul>
+<li>extjs(sencha)</li>
+<li>http-proxy</li>
+<li>express</li>
+<li>socket.io</li>
+<li>underscore</li>
+</ul>
       </section>
 
     </div>
