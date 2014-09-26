@@ -7,3 +7,4 @@ rules/setting.js
 rules/global.js
 rules/pool.js
 rules/pool-*.js
+rules/settings.js
