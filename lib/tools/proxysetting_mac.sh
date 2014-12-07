@@ -2,8 +2,8 @@ USER=$(./auth/Authenticate.app/Contents/MacOS/Authenticate -get username)
 PASS=$(./auth/Authenticate.app/Contents/MacOS/Authenticate -get password)
 
 function setProxy(){
-    echo $PASS | sudo -S sh -c "networksetup -setwebproxy WI-FI 127.0.0.1 $2"
-    echo $PASS | sudo -S sh -c "networksetup -setsecurewebproxy WI-FI 127.0.0.1 $2"
+    echo $PASS | sudo -S sh -c "networksetup -setwebproxy WI-FI $2 $3"
+    echo $PASS | sudo -S sh -c "networksetup -setsecurewebproxy WI-FI $2 $3"
 
     echo $PASS | sudo -S sh -c "networksetup -setwebproxystate WI-FI on"
     echo $PASS | sudo -S sh -c "networksetup -setsecurewebproxystate WI-FI on"
